@@ -64,6 +64,7 @@ def LanguageDifference(lan1,lan2):
         return "λ"
     return differenceLanList
 
+
 def alphabetIntersection(alp1, alp2):
     list1 = mainList[alp1]
     list2 = mainList[alp2]
@@ -75,6 +76,16 @@ def alphabetIntersection(alp1, alp2):
     if intersectionList == []:
         return "λ"
     return set(intersectionList)
+
+
+def concatenate(lan1,lan2):
+    concatenateList = []
+    list1 = languageList[lan1]
+    list2 = languageList[lan2]
+    for i in list1.getChainLanguage():
+        for j in list2.getChainLanguage():
+            concatenateList.append(str(i)+str(j))
+    return concatenateList
 
 
 def alphabetLock(list, noWords):
@@ -116,7 +127,7 @@ def generateLanguage(lista,noWordsLeng):
 
 
 
-def alpmenu():
+def menu():
     closeProgram = False
     while not closeProgram:
         option=int(input("""
@@ -132,6 +143,7 @@ def alpmenu():
     *    7 - Union de lenguajes                              *
     *    8 - Diferencia de lenguajes                         *
     *    9 - Interseccion de leguajes                        *
+    *    10 - Concadenacion de lenguajes                     *
     *    0 - Salir                                           *
     **********************************************************
     Opción: """))
@@ -203,6 +215,13 @@ def alpmenu():
                     print("La interseccion de los lenguajes " + str(index1) + " y " + str(index2) + " es: ")
                     print(intersectionLanguage(index1 - 1, index2 - 1))
                     os.system("PAUSE")
+            case 10:
+                index1 = int(input("Ingrese el primer lenguaje:"))
+                index2 = int(input("Ingrese el lenguaje que quiere concadenar: "))
+                if index1 <= contLang and index2 <= contLang:
+                    print("La concadenacion de los lenguajes " + str(index1) + " y " + str(index2) + " es: ")
+                    print(concatenate(index1 - 1, index2 - 1))
+                    os.system("PAUSE")
             case 0:
                 print("Programa cerrado con exito!")
                 closeProgram = True
@@ -232,4 +251,4 @@ if __name__ == "__main__":
                 alpObject = Alphabet(alpCad)
                 mainList.append(alpObject)
         flag = 1
-        alpmenu()
+        menu()
