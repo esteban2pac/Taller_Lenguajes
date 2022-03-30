@@ -88,6 +88,15 @@ def concatenate(lan1,lan2):
     return concatenateList
 
 
+def reverseLanguage(lan):
+    listRe = languageList[lan]
+    reverseLan=[]
+    for item in listRe.getChainLanguage():
+        item=item[::-1]
+        reverseLan.insert(0,item)
+    return reverseLan
+
+
 def alphabetLock(list, noWords):
     listLocked = ["λ"]
     for item1 in range(noWords):
@@ -144,6 +153,7 @@ def menu():
     *    8 - Diferencia de lenguajes                         *
     *    9 - Interseccion de leguajes                        *
     *    10 - Concadenacion de lenguajes                     *
+    *    11 - invertir lenguaje                              *
     *    0 - Salir                                           *
     **********************************************************
     Opción: """))
@@ -151,7 +161,7 @@ def menu():
             case 1:
                 for i in range(alpQuantity):
                     print("Alfabeto " + str(i + 1) + ": ")
-                    print(mainList[i])
+                    print(mainList[i-1])
                 os.system("PAUSE")
                 os.system("cls")
             case 2:
@@ -221,6 +231,12 @@ def menu():
                 if index1 <= contLang and index2 <= contLang:
                     print("La concadenacion de los lenguajes " + str(index1) + " y " + str(index2) + " es: ")
                     print(concatenate(index1 - 1, index2 - 1))
+                    os.system("PAUSE")
+            case 11:
+                index = int(input("Ingrese el  lenguaje:"))
+                if index <= contLang:
+                    print("La inversa del lenguaje " + str(index) + " es: ")
+                    print(reverseLanguage(index - 1))
                     os.system("PAUSE")
             case 0:
                 print("Programa cerrado con exito!")
