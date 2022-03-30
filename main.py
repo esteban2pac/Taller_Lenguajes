@@ -82,6 +82,12 @@ def concatenate(lan1,lan2):
     concatenateList = []
     list1 = languageList[lan1]
     list2 = languageList[lan2]
+    if list1.getChainLanguage() == ["λ"]:
+        return list2.getChainLanguage()
+    if list2.getgetChainLanguage() == ["λ"]:
+        return list1.getChainLanguage()
+    if list1.getChainLanguage() == ["λ"] and list2.getChainLanguage() == ["λ"]:
+        return ["λ"]
     for i in list1.getChainLanguage():
         for j in list2.getChainLanguage():
             concatenateList.append(str(i)+str(j))
@@ -255,7 +261,7 @@ if __name__ == "__main__":
     contLang = 0
     while flag == 0:
         alpQuantity = int(input("Ingrese la cantidad de alfabetos que va a ingresar: "))
-        while alpQuantity < 1:
+        while alpQuantity <= 1:
             print("Error ingrese un numero (minimo 2)")
             alpQuantity = int(input("Ingrese la cantidad de alfabetos que va a ingresar: "))
         for i in range(alpQuantity):
