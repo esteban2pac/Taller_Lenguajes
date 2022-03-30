@@ -1,4 +1,4 @@
-class alphabet:
+class Alphabet:
 
     def __init__(self, chain):
         self.chainAlphabet = self.checkAlphabet(chain)
@@ -15,13 +15,15 @@ class alphabet:
         return newList
 
 
-class language:
+class Language:
     def __init__(self, chain):
         self.chainLanguage = chain
 
     def __repr__(self):
         return str(self.chainLanguage)
 
+    def getChainLanguage(self):
+        return self.chainLanguage
 
 class Operations:
     def __init__(self) -> None:
